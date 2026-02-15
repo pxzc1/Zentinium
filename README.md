@@ -6,4 +6,4 @@ The primary goal of Zentinium is to make neural networks transparent and interpr
 Zentinium is built for anyone who needs deeper visibility into AI systems, whether for debugging, learning, or analysis.
 
 ## Developer
-[**pxzc1**](https://www.gtihub.com/pxzc1)
+[**pxzc1**](https://www.github.com/pxzc1)
