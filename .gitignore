@@ -33,10 +33,14 @@ yarn-debug.log*
 yarn-error.log*
 lerna-debug.log*
 .pnpm-debug.log*
+
 node_modules
+.env
 
 # Dependency directories
 node_modules/
+dist/
+build/
 
 # Output of 'npm pack'
 *.tgz
