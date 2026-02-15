@@ -45,6 +45,3 @@ node_modules/
 .DS_*
 **/*.backup.*
 **/*.back.*
-
-# Local files
-verifications.py
