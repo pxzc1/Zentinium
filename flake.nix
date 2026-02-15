@@ -16,7 +16,7 @@
       python = pkgs.python312;
     in {
       devShells.${system}.default = pkgs.mkShell {
-        name = "torch-shell";
+        name = "shell";
 
         packages = with pkgs; [
           python
