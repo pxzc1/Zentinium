@@ -1,24 +1,20 @@
 {
   "name": "zentinium",
   "version": "1.0.0",
-  "description": "",
-  "main": "dist/index.js",
+  "description": "Zentinium is a desktop AI visualization platform designed to provide real-time insight into the internal structure and behavior of neural networks. It supports multiple AI models and enables interactive exploration of layers, activations, and inference processes through an intuitive visual interface.",
+  "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pxzc1/Zentinium.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "dependencies": {
-    "electron": "^40.4.1",
-    "react": "^19.2.4",
-    "react-dom": "^19.2.4"
+  "bugs": {
+    "url": "https://github.com/pxzc1/Zentinium/issues"
   },
-  "devDependencies": {
-    "@types/react": "^19.2.14",
-    "@types/react-dom": "^19.2.3",
-    "@vitejs/plugin-react": "^5.1.4",
-    "typescript": "^5.9.3",
-    "vite": "^7.3.1"
-  }
+  "homepage": "https://github.com/pxzc1/Zentinium#readme"
 }
