@@ -18,12 +18,12 @@ pkgs.mkShell rec {
     pkgs.gtk3
     pkgs.pango
     pkgs.cairo
-    pkgs.libX11
-    pkgs.libXcomposite
-    pkgs.libXdamage
-    pkgs.libXext
-    pkgs.libXfixes
-    pkgs.libXrandr
+    pkgs.xorg.libX11
+    pkgs.xorg.libXcomposite
+    pkgs.xorg.libXdamage
+    pkgs.xorg.libXext
+    pkgs.xorg.libXfixes
+    pkgs.xorg.libXrandr
     pkgs.libgbm
     pkgs.expat
     pkgs.libxcb
