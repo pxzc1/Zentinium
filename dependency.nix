@@ -1,6 +1,6 @@
 { pkgs ? import <nixpkgs> {} }:
 
-pkgs.mkShell {
+pkgs.mkShell rec {
   buildInputs = [
     # NodeJS
     pkgs.nodejs_latest
