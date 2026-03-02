@@ -15,7 +15,7 @@
 
       nodeDeps = import ./dependency.nix { inherit pkgs; };
       
-      python = pkgs.python312; # [cite: 9]
+      python = pkgs.python312;
     in {
       devShells.${system}.default = pkgs.mkShell {
         name = "shell";
