@@ -32,7 +32,7 @@ const content = {
   th: {
     about: "เกี่ยวกับ",
     docs: "เอกสารประกอบ",
-    donate: "บริจาค",
+    donate: "โดเนท",
     heroTitle: <>Visualizing <br />Continuously</>,
     heroSub: "แอปพลิเคชันสำหรับดูการทำงานของ Neural Network บนโมเดลที่กำลังทำงานอยู่บนคอมพิวเตอร์ของคุณ ปลอดภัยและฟรี",
     download: "ดาวน์โหลดสำหรับ Windows",
