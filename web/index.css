@@ -2,9 +2,32 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
+  body {
+    @apply font-prompt;
+    margin: 0;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    background-color: #0a0a0a;
+    color-scheme: dark;
+  }
+}
+
 @layer utilities {
   .font-prompt {
     font-family: 'Prompt', sans-serif;
+  }
+  .font-ibm {
+    font-family: 'IBM Plex Sans', sans-serif;
+  }
+  .font-google-flex {
+    font-family: 'Google Sans Flex', sans-serif;
+  }
+  .font-lexend { 
+    font-family: 'Lexend', sans-serif; 
+  }
+  .font-outfit { 
+    font-family: 'Outfit', sans-serif; 
   }
 }
 
