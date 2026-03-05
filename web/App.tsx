@@ -20,7 +20,7 @@ const content = {
     features: [
       { title: "Real-time Visualization", desc: "Monitor neural network activity live while the model is running." },
       { title: "Low Latency", desc: "Optimized Rust-based backend ensures visualization matches GPU speed." },
-      { title: "Privacy First", desc: "Everything runs locally on your hardware, none working on cloude VPS or any server." }
+      { title: "Privacy First", desc: "Everything runs locally on your hardware, none working on cloud VPS or any server." }
     ],
     philosophy: "ABOUT",
     aboutTitle: <>Transparency for the <br />Next Era of AI.</>,
@@ -77,7 +77,7 @@ const MatrixBackground = () => {
 };
 
 const Logo = ({ className = "w-8 h-8" }: { className?: string }) => (
-    <svg 
+  <svg 
     viewBox="0 0 100 100" 
     fill="none" 
     xmlns="http://www.w3.org/2000/svg" 

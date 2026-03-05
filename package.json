@@ -22,8 +22,14 @@
     "vite": "^7.3.1"
   },
   "dependencies": {
+    "@fontsource-variable/google-sans-flex": "^5.2.1",
+    "@fontsource/ibm-plex-sans": "^5.2.8",
+    "@fontsource/lexend": "^5.2.11",
+    "@fontsource/outfit": "^5.2.8",
+    "@fontsource/prompt": "^5.2.8",
     "@tauri-apps/api": "^2.10.1",
     "@tauri-apps/cli": "^2.10.0",
+    "framer-motion": "^12.35.0",
     "lucide-react": "^0.576.0",
     "react": "^19.2.4",
     "react-dom": "^19.2.4",
