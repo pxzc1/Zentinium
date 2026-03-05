@@ -2,7 +2,7 @@
   description = "Python CUDA + Node Electron Integration";
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.11"; # Updated to your current channel
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.11";
   };
 
   outputs = { self, nixpkgs }:
@@ -14,6 +14,7 @@
       };
 
       nodeDeps = import ./dependency.nix { inherit pkgs; };
+      tauriDeps = import ./tauri.nix { inherit pkgs; };
       
       python = pkgs.python312;
     in {
@@ -29,7 +30,7 @@
           stdenv.cc.cc
           glibc
           cudaPackages.cudatoolkit
-        ] ++ nodeDeps.buildInputs;
+        ] ++ nodeDeps.buildInputs ++ tauriDeps.buildInputs;
 
         shellHook = ''
           export NPM_CONFIG_PREFIX=$PWD/.npm-global
@@ -47,10 +48,12 @@
             ${python}/bin/python -m venv "$venvDir"
           fi
           source "$venvDir/bin/activate"
+          echo "Python: $(python --version)"
           python ./verifications.py
 
-          echo "Node: $(node -v) | NPM: $(npm -v)" 
-          echo "Python: $(python --version)"
+          echo "Node: $(node -v) | npm: $(npm -v)"
+          echo "rustc: $(rustc --version)"
+          echo "cargo: $(cargo --version)"
         '';
       };
     };

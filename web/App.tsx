@@ -15,14 +15,14 @@ const content = {
     donate: "Donate",
     heroTitle: <>Visualizing <br />Continuously</>,
     heroSub: "Application for visualizing Neural Networks running locally on your computer, Private and Free.",
-    download: "Download for Windows",
+    download: "Download for Linux",
     source: "Source Code",
     features: [
       { title: "Real-time Visualization", desc: "Monitor neural network activity live while the model is running." },
       { title: "Low Latency", desc: "Optimized Rust-based backend ensures visualization matches GPU speed." },
       { title: "Privacy First", desc: "Everything runs locally on your hardware, none working on cloude VPS or any server." }
     ],
-    philosophy: "Our Philosophy",
+    philosophy: "ABOUT",
     aboutTitle: <>Transparency for the <br />Next Era of AI.</>,
     aboutBody: "Zentinium was built on the belief that AI shouldn't be a \"black box.\" Our tool hooks directly into your local runtime to provide high-fidelity visual streams.",
     privacyTitle: "Privacy by Design",
@@ -35,14 +35,14 @@ const content = {
     donate: "โดเนท",
     heroTitle: <>Visualizing <br />Continuously</>,
     heroSub: "แอปพลิเคชันสำหรับดูการทำงานของ Neural Network บนโมเดลที่กำลังทำงานอยู่บนคอมพิวเตอร์ของคุณ ปลอดภัยและฟรี",
-    download: "ดาวน์โหลดสำหรับ Windows",
+    download: "ดาวน์โหลดสำหรับ Linux",
     source: "ซอร์สโค้ด",
     features: [
       { title: "ดูการทำงานแบบเรียลไทม์", desc: "ดูการทำงานของ Neural Network ขณะที่โมเดลกำลังทำงานอยู่ โดยไม่ต้องกดหยุดการทำงานใดๆ" },
       { title: "ความหน่วงต่ำ", desc: "Backend ที่พัฒนาด้วย Rust ช่วยให้การแสดงผลลื่นไหลตามความเร็ว GPU ของคุณ" },
       { title: "ความปลอดภัย", desc: "ทุกอย่างทำงานบนอุปกรณ์ของคุณ ไม่มีการทำงานบนเซิร์ฟเวอร์อื่นๆ" }
     ],
-    philosophy: "ปรัชญาของเรา",
+    philosophy: "เกี่ยวกับ",
     aboutTitle: <>ความโปร่งใสสำหรับ <br />ยุคใหม่ของ AI</>,
     aboutBody: "Zentinium ถูกสร้างขึ้นบนความเชื่อที่ว่า AI ไม่ควรเป็น \"กล่องดำ\" เครื่องมือของเราเชื่อมต่อกับรันไทม์ในเครื่องโดยตรงเพื่อแสดงผลข้อมูลที่มีความแม่นยำสูง",
     privacyTitle: "ความเป็นส่วนตัวโดยการออกแบบ",
@@ -77,20 +77,47 @@ const MatrixBackground = () => {
 };
 
 const Logo = ({ className = "w-8 h-8" }: { className?: string }) => (
-  <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" className={className}>
-    <path d="M50 5L90 27.5V72.5L50 95L10 72.5V27.5L50 5Z" stroke="currentColor" strokeWidth="6" strokeLinejoin="round" />
-    <path d="M30 35H70L30 65H70" stroke="currentColor" strokeWidth="8" strokeLinecap="round" strokeLinejoin="round" />
-    <circle cx="30" cy="35" r="4" fill="currentColor" />
-    <circle cx="70" cy="65" r="4" fill="currentColor" />
+    <svg 
+    viewBox="0 0 100 100" 
+    fill="none" 
+    xmlns="http://www.w3.org/2000/svg" 
+    className={className}
+  >
+    <path 
+      d="M25 30H75L25 70H75" 
+      stroke="currentColor" 
+      strokeWidth="8" 
+      strokeLinecap="round" 
+      strokeLinejoin="round" 
+      className="opacity-20"
+    />
+    
+    <path 
+      d="M25 30H75L25 70H75" 
+      stroke="currentColor" 
+      strokeWidth="8" 
+      strokeLinecap="round" 
+      strokeLinejoin="round" 
+    />
+
+    <circle cx="25" cy="30" r="6" fill="currentColor" />
+    <circle cx="75" cy="70" r="6" fill="currentColor" />
   </svg>
 );
 
 const Navbar = () => {
   const { lang } = useParams<{ lang: Lang }>();
+  const location = useLocation();
   const isThai = lang === 'th';
   const t = content[isThai ? 'th' : 'en'];
   const navFont = isThai ? 'font-prompt' : 'font-google-flex';
   const navSize = isThai ? 'text-[13px]' : 'text-[11px]';
+
+  const getNewLangPath = (newLang: Lang) => {
+    const pathSegments = location.pathname.split('/');
+    pathSegments[1] = newLang;
+    return pathSegments.join('/');
+  };
 
   return (
     <nav className="sticky top-0 z-50 w-full border-b border-white/[0.06] bg-[#0a0a0a]/60 backdrop-blur-xl backdrop-saturate-150">
@@ -113,9 +140,19 @@ const Navbar = () => {
             </a>
             
             <div className="flex items-center gap-2 text-white/20 border-l border-white/10 pl-4 h-4 text-[10px] font-bold">
-              <Link to="/th" className={`hover:text-white transition-colors ${isThai ? 'text-white' : ''}`}>TH</Link>
+              <Link 
+                to={getNewLangPath('th')} 
+                className={`hover:text-white transition-colors ${isThai ? 'text-white' : ''}`}
+              >
+                TH
+              </Link>
               <span className="opacity-30">|</span>
-              <Link to="/en" className={`hover:text-white transition-colors ${!isThai ? 'text-white' : ''}`}>EN</Link>
+              <Link 
+                to={getNewLangPath('en')} 
+                className={`hover:text-white transition-colors ${!isThai ? 'text-white' : ''}`}
+              >
+                EN
+              </Link>
             </div>
           </div>
         </div>
@@ -157,7 +194,7 @@ const HomePage = () => {
           {t.heroSub}
         </p>
         <div className={`flex flex-col sm:flex-row gap-5 mb-32 ${btnFont}`}>
-          <button className="group relative flex items-center justify-center px-10 py-5 bg-white text-black font-semibold rounded-2xl overflow-hidden transition-all duration-500 ease-out hover:scale-[1.05] active:scale-95 shadow-[0_0_50px_rgba(255,255,255,0.1)]">
+          <button className="group relative flex items-center justify-center px-10 py-5 bg-[#F4F1F8] text-black font-semibold rounded-2xl overflow-hidden transition-all duration-500 ease-out hover:scale-[1.05] active:scale-95 shadow-[0_0_50px_rgba(255,255,255,0.1)]">
             <div className="flex items-center gap-3 transition-transform duration-500 ease-out group-hover:-translate-x-4">
               <Download size={20} strokeWidth={3} />
               <span>{t.download}</span>
