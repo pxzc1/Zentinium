@@ -1,18 +1,36 @@
 export default function NeuralCanvas() {
   return (
-    <div className="flex-1 w-full bg-[#161B22] rounded-2xl border border-gray-800 relative overflow-hidden group shadow-2xl">
-      <div 
-        className="absolute inset-0 opacity-[0.03] pointer-events-none" 
-        style={{ backgroundImage: 'linear-gradient(#F1F4F8 1px, transparent 1px), linear-gradient(90px, #F1F4F8 1px, transparent 1px)', backgroundSize: '40px 40px' }} 
-      />
+    <div className="h-full w-full bg-[#0D1117] relative overflow-hidden flex items-center justify-center">
+      {/* 3D Grid Floor Effect */}
+      <div className="absolute inset-0 opacity-10" 
+           style={{ backgroundImage: 'linear-gradient(#3b82f6 1px, transparent 1px), linear-gradient(90deg, #3b82f6 1px, transparent 1px)', backgroundSize: '50px 50px', transform: 'perspective(500px) rotateX(60deg)' }} />
       
-      <div className="absolute inset-0 flex flex-col items-center justify-center">
-        <div className="w-24 h-24 border-4 border-blue-500/20 border-t-blue-500 rounded-full animate-spin mb-4" />
-        <p className="text-[#F1F4F8] font-mono text-sm tracking-widest opacity-50">COMPUTING NODES...</p>
+      {/* Animated Nodes Simulation */}
+      <div className="relative w-64 h-64">
+        {[...Array(5)].map((_, i) => (
+          <div 
+            key={i}
+            className="absolute rounded-full bg-blue-500/20 border border-blue-400/50 animate-pulse"
+            style={{
+              width: `${Math.random() * 40 + 20}px`,
+              height: `${Math.random() * 40 + 20}px`,
+              left: `${Math.random() * 80}%`,
+              top: `${Math.random() * 80}%`,
+              animationDelay: `${i * 0.5}s`,
+              boxShadow: '0 0 15px rgba(59, 130, 246, 0.5)'
+            }}
+          />
+        ))}
+        {/* Connection Lines (SVG) */}
+        <svg className="absolute inset-0 w-full h-full opacity-30">
+          <line x1="10%" y1="10%" x2="90%" y2="90%" stroke="#3b82f6" strokeWidth="1" />
+          <line x1="90%" y1="10%" x2="10%" y2="90%" stroke="#3b82f6" strokeWidth="1" />
+        </svg>
       </div>
-      
-      <div className="absolute top-4 right-4 flex gap-2">
-        <span className="px-2 py-1 bg-green-500/10 text-green-400 text-[10px] font-bold rounded border border-green-500/20 uppercase">Live Activity</span>
+
+      <div className="absolute bottom-4 left-4 flex items-center gap-2">
+        <div className="w-2 h-2 bg-green-500 rounded-full animate-ping" />
+        <span className="text-[10px] text-green-500 font-mono font-bold uppercase">System Active</span>
       </div>
     </div>
   );
