@@ -20,6 +20,12 @@
 
     python = pkgs.python312;
 
+    baseLibs = pkgs.lib.makeLibraryPath [
+      pkgs.stdenv.cc.cc
+      pkgs.zlib
+      pkgs.cudaPackages.cudatoolkit
+    ];
+
   in {
     devShells.${system}.default = pkgs.mkShell {
       name = "zentinium";
@@ -39,18 +45,17 @@
       ++ tauriDeps.buildInputs
       ++ rustDeps.buildInputs;
 
+      # FIX: expose env vars to build tools like pkg-config and Cargo
+      PKG_CONFIG_PATH = tauriDeps.PKG_CONFIG_PATH;
+
+      LD_LIBRARY_PATH = "/run/opengl-driver/lib:/run/opengl-driver-32/lib:${baseLibs}:${nodeDeps.LD_LIBRARY_PATH}:${tauriDeps.LD_LIBRARY_PATH}";
+
       shellHook = ''
         # npm global installs fix
         export NPM_CONFIG_PREFIX=$PWD/.npm-global
         export PATH=$PWD/.npm-global/bin:$PATH
 
         export venvDir=env
-
-        export LD_LIBRARY_PATH="/run/opengl-driver/lib:/run/opengl-driver-32/lib:${pkgs.lib.makeLibraryPath [
-          pkgs.stdenv.cc.cc
-          pkgs.zlib
-          pkgs.cudaPackages.cudatoolkit
-        ]}:${nodeDeps.LD_LIBRARY_PATH}:${tauriDeps.LD_LIBRARY_PATH}:$LD_LIBRARY_PATH"
 
         if [ ! -d "$venvDir" ]; then
           echo "Creating Python virtual environment"
